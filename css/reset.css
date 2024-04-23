@@ -1,0 +1,90 @@
+/* A basic CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  color-scheme: dark;
+  font-family: var(--ff);
+  font-size: 10px; /* Resetting the default root font size */
+  scroll-behavior: smooth;
+}
+
+li {
+  list-style-type: none;
+}
+
+a,
+i,
+span,
+input,
+button {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button {
+  background: none;
+  color: inherit;
+  font: inherit;
+  border: none;
+}
+
+input {
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+sub,
+sup {
+  font-size: 0.75em;
+}
+
+sub {
+  vertical-align: baseline;
+}
+
+sup {
+  vertical-align: top;
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+/* User selection styles */
+::selection {
+  background-color: var(--white-alpha-8);
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px; /* For the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--white-alpha-8);
+  border-radius: var(--br-pill);
+}
