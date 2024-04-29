@@ -344,15 +344,9 @@ export function updateWeather(lat, lon) {
         <h2 class="title-2">Today at</h2>
 
         <div class="slider-container">
-          <!-- Hourly temperature forecast -->
-          <ul class="slider-list" data-temp>
-            <!-- Temperature forecast 1 -->
-          </ul>
+          <ul class="slider-list" data-temp></ul>
 
-          <!-- Hourly wind speed and direction forecast -->
-          <ul class="slider-list" data-wind>
-            <!-- Wind speed forecast 1 -->
-          </ul>
+          <ul class="slider-list" data-wind></ul>
         </div>
       `;
 
@@ -422,9 +416,7 @@ export function updateWeather(lat, lon) {
         <h2 class="title-2" id="forecast-label">5 Day Forecast</h2>
 
         <div class="forecast-cards | card card-lg">
-          <ul data-5-day-forecast-list>
-            <!-- Forecast 1 -->
-          </ul>
+          <ul data-5-day-forecast-list></ul>
         </div>
       `;
 
