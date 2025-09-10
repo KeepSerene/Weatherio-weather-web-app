@@ -116,7 +116,7 @@ export function showPlaceholderContent() {
   currentWeatherSec.innerHTML = `
     <div class="current-weather-card | card card-lg" style="text-align: center; padding: 40px 20px;">
       <i class="msr-icon" style="font-size: 4rem; color: var(--on-surface-variant); margin-bottom: 16px;">location_searching</i>
-      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 12px;">Welcome to Weatherio</h2>
+      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 12px;">Welcome to Wardosphere</h2>
       <div style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center;">
         <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
           <i class="msr-icon">my_location</i>

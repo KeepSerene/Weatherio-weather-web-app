@@ -1,0 +1,43 @@
+<svg width="300" height="60" viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cloud Icon -->
+  <g transform="translate(10, 15)">
+    <!-- Main cloud body -->
+    <path d="M8 24c-4.4 0-8-3.6-8-8s3.6-8 8-8c1.5 0 2.9 0.4 4.1 1.1C13.3 4.8 17.8 1 23 1c6.6 0 12 5.4 12 12 0 1.1-0.1 2.1-0.4 3.1C36.4 16.6 38 18.2 38 20.5c0 2.8-2.2 5-5 5H8z" 
+          fill="white" 
+          opacity="0.9"/>
+    
+    <!-- Cloud highlight for depth -->
+    <path d="M12 20c-2.2 0-4-1.8-4-4s1.8-4 4-4c0.7 0 1.4 0.2 1.9 0.5C14.5 10.3 16.9 8.5 20 8.5c3.3 0 6 2.7 6 6 0 0.5-0.1 1-0.2 1.5C26.7 16.3 27.5 16.8 27.5 17.8c0 1.4-1.1 2.5-2.5 2.5H12z" 
+          fill="white" 
+          opacity="0.4"/>
+  </g>
+  
+  <!-- Wardosphere Text -->
+  <text x="55" y="38" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="24" 
+        font-weight="600" 
+        fill="white" 
+        letter-spacing="0.5px">Wardosphere</text>
+  
+  <!-- Subtle glow effect -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Apply glow to text -->
+  <text x="55" y="38" 
+        font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" 
+        font-size="24" 
+        font-weight="600" 
+        fill="white" 
+        letter-spacing="0.5px"
+        filter="url(#glow)"
+        opacity="0.8">Wardosphere</text>
+</svg>
