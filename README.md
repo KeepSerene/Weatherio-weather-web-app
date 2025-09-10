@@ -78,14 +78,10 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
    OPEN_WEATHER_MAP_API_KEY=your_api_key_here
    ```
 
-4. **Start the development server**
-
-   ```bash
-   npm run dev
-   ```
+4. **Start the development server with Live Server**
 
 5. **Open your browser**
-   Navigate to `http://localhost:3000`
+   Navigate to `localhost:PORT`
 
 ### Getting API Keys
 
