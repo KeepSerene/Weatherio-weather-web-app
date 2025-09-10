@@ -105,40 +105,6 @@ const wrapperEl = document.querySelector("[data-wrapper]");
 const loadingScreenEl = document.querySelector("[data-loading-screen]");
 const erroneousContentEl = document.querySelector("[data-erroneous-content]");
 
-currentLocationBtn.addEventListener("click", (e) => {
-  // prevent the default anchor behavior
-  e.preventDefault();
-
-  // Always call getCurrentLocation directly when button is clicked
-  if (window.navigator.geolocation) {
-    // show placeholder while waiting for location permission
-    showPlaceholderContent();
-
-    window.navigator.geolocation.getCurrentPosition(
-      (result) => {
-        const { latitude, longitude } = result.coords;
-        window.location.hash = "#/current-location";
-        updateWeather(latitude, longitude);
-      },
-      (error) => {
-        console.error("Geolocation error:", error);
-        if (error.code === error.PERMISSION_DENIED) {
-          // user denied location access
-          showPlaceholderContent();
-        } else {
-          // other errors, fallback to default location
-          window.location.hash = "#/weather?lat=51.5073219&lon=-0.1276474";
-        }
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 300000, // 5 mins
-      }
-    );
-  }
-});
-
 // placeholder content on initial load
 export function showPlaceholderContent() {
   const currentWeatherSec = document.querySelector("[data-current-weather]");
@@ -151,7 +117,7 @@ export function showPlaceholderContent() {
     <div class="current-weather-card | card card-lg" style="text-align: center; padding: 40px 20px;">
       <i class="msr-icon" style="font-size: 4rem; color: var(--on-surface-variant); margin-bottom: 16px;">location_searching</i>
       <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 12px;">Welcome to Weatherio</h2>
-      <div style="display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center;">
         <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
           <i class="msr-icon">my_location</i>
           <span class="label-1">Allow Location</span>
