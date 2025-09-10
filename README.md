@@ -137,7 +137,6 @@ wardosphere/
 │   └── route.js            # Client-side routing
 ├── font/                    # Custom fonts
 ├── index.html              # Main HTML file
-├── vercel.json            # Vercel configuration
 └── README.md              # Project documentation
 ```
 
@@ -149,7 +148,7 @@ wardosphere/
 
 ### Vercel Deployment
 
-The application is configured for automatic deployment on Vercel. The `vercel.json` file contains the necessary configuration for serverless functions.
+The application is configured for automatic deployment on Vercel.
 
 ## 🎨 Customization
 
