@@ -26,7 +26,6 @@ export function fetchWeatherData(url, callback) {
     .then((data) => callback(data))
     .catch((error) => {
       console.error("Error fetching weather data:", error);
-      // better error handling
       callback(null);
     });
 }
