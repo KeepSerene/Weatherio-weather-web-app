@@ -62,7 +62,7 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
 
    ```bash
    git clone https://github.com/KeepSerene/Weatherio-weather-web-app.git
-   cd wardosphere
+   cd Weatherio-weather-web-app
    ```
 
 2. **Install dependencies**
@@ -72,7 +72,7 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
    ```
 
 3. **Environment setup**
-   Create a `.env.local` file in the root directory:
+   Create a `.env` file in the root directory:
 
    ```env
    OPEN_WEATHER_MAP_API_KEY=your_api_key_here
