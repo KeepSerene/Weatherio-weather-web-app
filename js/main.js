@@ -105,6 +105,40 @@ const wrapperEl = document.querySelector("[data-wrapper]");
 const loadingScreenEl = document.querySelector("[data-loading-screen]");
 const erroneousContentEl = document.querySelector("[data-erroneous-content]");
 
+currentLocationBtn.addEventListener("click", (e) => {
+  // prevent the default anchor behavior
+  e.preventDefault();
+
+  // Always call getCurrentLocation directly when button is clicked
+  if (window.navigator.geolocation) {
+    // show placeholder while waiting for location permission
+    showPlaceholderContent();
+
+    window.navigator.geolocation.getCurrentPosition(
+      (result) => {
+        const { latitude, longitude } = result.coords;
+        window.location.hash = "#/current-location";
+        updateWeather(latitude, longitude);
+      },
+      (error) => {
+        console.error("Geolocation error:", error);
+        if (error.code === error.PERMISSION_DENIED) {
+          // user denied location access
+          showPlaceholderContent();
+        } else {
+          // other errors, fallback to default location
+          window.location.hash = "#/weather?lat=51.5073219&lon=-0.1276474";
+        }
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 300000, // 5 mins
+      }
+    );
+  }
+});
+
 // placeholder content on initial load
 export function showPlaceholderContent() {
   const currentWeatherSec = document.querySelector("[data-current-weather]");

@@ -516,6 +516,10 @@ article.wrapper::before {
   display: none;
 }
 
+.footer .copyright-year {
+  display: inline;
+}
+
 .fade-in .footer {
   display: flex;
 }
