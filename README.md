@@ -25,7 +25,7 @@
 
 ## 🚀 Live Demo
 
-Visit [Wardosphere](https://your-wardosphere-url.com) to see the application in action.
+Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in action.
 
 ## 🛠️ Technology Stack
 
@@ -61,7 +61,7 @@ Visit [Wardosphere](https://your-wardosphere-url.com) to see the application in 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/wardosphere.git
+   git clone https://github.com/KeepSerene/Weatherio-weather-web-app.git
    cd wardosphere
    ```
 
@@ -183,12 +183,6 @@ Replace icons in the `images/weather-icons/` directory to customize the visual a
 3. Import the project
 4. Add environment variables in Vercel dashboard
 5. Deploy automatically
-
-### Manual Deployment
-
-1. Build the project: `npm run build`
-2. Upload files to your hosting provider
-3. Configure environment variables on your server
 
 ## 🤝 Contributing
 
