@@ -7,41 +7,69 @@
 
 "use strict";
 
-const API_KEY = "9bc1c92371eb6dc3976b262b99a6775d";
+// Uses our Vercel serverless functions instead of direct API calls
+// keeping the API key secure on the server side and prevents CORS issues
 
 /**
- * Fetches data from the server
- * @param {string} url API URL
+ * Fetches data from our serverless functions
+ * @param {string} url API URL (pointing to our Vercel serverless functions)
  * @param {Function} callback callback function
  */
-
 export function fetchWeatherData(url, callback) {
-  fetch(`${url}&appid=${API_KEY}`)
-    .then((response) => response.json())
-    .then((data) => callback(data));
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => callback(data))
+    .catch((error) => {
+      console.error("Error fetching weather data:", error);
+      // better error handling
+      callback(null);
+    });
 }
 
+// Updated all URL functions to point to our Vercel serverless functions
 export const url = {
   getCurrentWeather(lat, lon) {
-    return `https://api.openweathermap.org/data/2.5/weather?${lat}&${lon}&units=metric`;
+    // Now calls our Vercel API route instead of OpenWeatherMap directly
+    return `/api/current-weather?lat=${lat.replace(
+      "lat=",
+      ""
+    )}&lon=${lon.replace("lon=", "")}`;
   },
 
   getHourlyForecast(lat, lon) {
-    return `https://api.openweathermap.org/data/2.5/forecast?${lat}&${lon}&units=metric`;
+    // Points to our forecast API endpoint
+    return `/api/forecast?lat=${lat.replace("lat=", "")}&lon=${lon.replace(
+      "lon=",
+      ""
+    )}`;
   },
 
   getAirPollutionData(lat, lon) {
-    return `http://api.openweathermap.org/data/2.5/air_pollution?${lat}&${lon}`;
+    // Points to our air pollution API endpoint
+    return `/api/air-pollution?lat=${lat.replace("lat=", "")}&lon=${lon.replace(
+      "lon=",
+      ""
+    )}`;
   },
 
   /**
    * @param {string} query Query, e.g., "london", "Paphos", etc.
    */
   getGeocoding(query) {
-    return `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5`;
+    // Points to our geocoding API endpoint
+    return `/api/geocoding?q=${encodeURIComponent(query)}`;
   },
 
   undoGeocoding(lat, lon) {
-    return `http://api.openweathermap.org/geo/1.0/reverse?${lat}&${lon}&limit=5`;
+    // Points to our reverse geocoding API endpoint
+    return `/api/reverse-geocoding?lat=${lat.replace(
+      "lat=",
+      ""
+    )}&lon=${lon.replace("lon=", "")}`;
   },
 };

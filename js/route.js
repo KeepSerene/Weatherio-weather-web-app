@@ -38,11 +38,16 @@ const routes = new Map([
 const onHashChange = () => {
   const requestedURL = window.location.hash.slice(1);
 
-  const [route, query] = requestedURL.includes("?") // IS IT CORRECT???
+  const [route, query] = requestedURL.includes("?")
     ? requestedURL.split("?")
-    : [requestedURL];
+    : [requestedURL, null];
 
-  routes.get(route) ? routes.get(route)(query) : handleError404();
+  const routeHandler = routes.get(route);
+  if (routeHandler) {
+    routeHandler(query);
+  } else {
+    handleError404();
+  }
 };
 
 window.addEventListener("hashchange", onHashChange);
