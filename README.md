@@ -46,7 +46,6 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
 
 - **Vercel**: Hosting and deployment platform
 - **Git**: Version control
-- **NPM**: Package management
 
 ## 📦 Installation
 
