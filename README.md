@@ -65,11 +65,7 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
    cd Weatherio-weather-web-app
    ```
 
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
+2. **No extra dependencies required**
 
 3. **Environment setup**
    Create a `.env` file in the root directory:
