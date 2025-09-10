@@ -554,3 +554,6 @@ export function updateWeather(lat, lon) {
 }
 
 export const handleError404 = () => (erroneousContentEl.style.display = "flex");
+
+const copyrightYearEl = document.querySelector("[data-copyright-year]");
+copyrightYearEl.innerText = String(new Date().getFullYear()) || "2024";
