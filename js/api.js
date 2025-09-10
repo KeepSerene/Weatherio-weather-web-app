@@ -34,27 +34,15 @@ export function fetchWeatherData(url, callback) {
 // Updated all URL functions to point to our Vercel serverless functions
 export const url = {
   getCurrentWeather(lat, lon) {
-    // Now calls our Vercel API route instead of OpenWeatherMap directly
-    return `/api/current-weather?lat=${lat.replace(
-      "lat=",
-      ""
-    )}&lon=${lon.replace("lon=", "")}`;
+    return `/api/current-weather?lat=${lat}&lon=${lon}`;
   },
 
   getHourlyForecast(lat, lon) {
-    // Points to our forecast API endpoint
-    return `/api/forecast?lat=${lat.replace("lat=", "")}&lon=${lon.replace(
-      "lon=",
-      ""
-    )}`;
+    return `/api/forecast?lat=${lat}&lon=${lon}`;
   },
 
   getAirPollutionData(lat, lon) {
-    // Points to our air pollution API endpoint
-    return `/api/air-pollution?lat=${lat.replace("lat=", "")}&lon=${lon.replace(
-      "lon=",
-      ""
-    )}`;
+    return `/api/air-pollution?lat=${lat}&lon=${lon}`;
   },
 
   /**
@@ -66,10 +54,6 @@ export const url = {
   },
 
   undoGeocoding(lat, lon) {
-    // Points to our reverse geocoding API endpoint
-    return `/api/reverse-geocoding?lat=${lat.replace(
-      "lat=",
-      ""
-    )}&lon=${lon.replace("lon=", "")}`;
+    return `/api/reverse-geocoding?lat=${lat}&lon=${lon}`;
   },
 };

@@ -7,20 +7,40 @@
 
 "use strict";
 
-import { updateWeather, handleError404 } from "./main.js";
+import {
+  updateWeather,
+  handleError404,
+  showPlaceholderContent,
+} from "./main.js";
 
 const defaultLocation = "#/weather?lat=51.5073219&lon=-0.1276474"; // London
 
 const getCurrentLocation = () => {
+  // show placeholder while waiting for location permission
+  showPlaceholderContent();
+
   window.navigator.geolocation.getCurrentPosition(
     (result) => {
       const { latitude, longitude } = result.coords;
 
-      updateWeather(`lat=${latitude}`, `lon=${longitude}`);
+      updateWeather(latitude, longitude);
     },
 
     (error) => {
-      window.location.hash = defaultLocation;
+      console.error("Geolocation error:", error);
+      if (error.code === error.PERMISSION_DENIED) {
+        // user denied location access
+        showPlaceholderContent();
+      } else {
+        // other errors, fallback to default location
+        window.location.hash = defaultLocation;
+      }
+    },
+    {
+      // options for better geolocation experience
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 300000, // 5 mins
     }
   );
 };
@@ -28,7 +48,17 @@ const getCurrentLocation = () => {
 /**
  * @param {string} query Searched query
  */
-const getSearchedLocation = (query) => updateWeather(...query.split("&"));
+const getSearchedLocation = (query) => {
+  const params = new URLSearchParams(query);
+  const lat = params.get("lat");
+  const lon = params.get("lon");
+
+  if (lat && lon) {
+    updateWeather(parseFloat(lat), parseFloat(lon));
+  } else {
+    handleError404();
+  }
+};
 
 const routes = new Map([
   ["/current-location", getCurrentLocation],
@@ -53,6 +83,11 @@ const onHashChange = () => {
 window.addEventListener("hashchange", onHashChange);
 
 window.addEventListener("load", () => {
-  if (!window.location.hash) window.location.hash = "#/current-location";
-  else onHashChange();
+  if (!window.location.hash) {
+    // placeholder content immediately on first load
+    showPlaceholderContent();
+    window.location.hash = "#/current-location";
+  } else {
+    onHashChange();
+  }
 });

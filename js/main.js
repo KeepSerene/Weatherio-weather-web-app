@@ -105,6 +105,73 @@ const wrapperEl = document.querySelector("[data-wrapper]");
 const loadingScreenEl = document.querySelector("[data-loading-screen]");
 const erroneousContentEl = document.querySelector("[data-erroneous-content]");
 
+// placeholder content on initial load
+export function showPlaceholderContent() {
+  const currentWeatherSec = document.querySelector("[data-current-weather]");
+  const highlightsSec = document.querySelector("[data-highlights]");
+  const hourlyForecastSec = document.querySelector("[data-hourly-forecast]");
+  const weeklyForecastSec = document.querySelector("[data-5-day-forecast]");
+
+  // placeholder for current weather
+  currentWeatherSec.innerHTML = `
+    <div class="current-weather-card | card card-lg" style="text-align: center; padding: 40px 20px;">
+      <i class="msr-icon" style="font-size: 4rem; color: var(--on-surface-variant); margin-bottom: 16px;">location_searching</i>
+      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 12px;">Welcome to Weatherio</h2>
+      <p class="body-3" style="color: var(--on-surface-variant-2); margin-bottom: 20px;">
+        To get started, either allow location access or search for a city above
+      </p>
+      <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
+          <i class="msr-icon">my_location</i>
+          <span class="label-1">Allow Location</span>
+        </div>
+        <span style="color: var(--on-surface-variant);">or</span>
+        <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
+          <i class="msr-icon">search</i>
+          <span class="label-1">Search City</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // placeholder for highlights
+  highlightsSec.innerHTML = `
+    <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">wb_sunny</i>
+      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 8px;">Weather Highlights</h2>
+      <p class="body-3" style="color: var(--on-surface-variant-2);">
+        Air quality, humidity, pressure and more will appear here
+      </p>
+    </div>
+  `;
+
+  // placeholder for hourly forecast
+  hourlyForecastSec.innerHTML = `
+    <h2 class="title-2">Hourly Forecast</h2>
+    <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">schedule</i>
+      <p class="body-3" style="color: var(--on-surface-variant-2);">
+        24-hour weather forecast will be displayed here
+      </p>
+    </div>
+  `;
+
+  // placeholder for weekly forecast
+  weeklyForecastSec.innerHTML = `
+    <h2 class="title-2">5 Day Forecast</h2>
+    <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">date_range</i>
+      <p class="body-3" style="color: var(--on-surface-variant-2);">
+        Extended weather forecast will be shown here
+      </p>
+    </div>
+  `;
+
+  loadingScreenEl.style.display = "none";
+  wrapperEl.style.overflowY = "auto";
+  wrapperEl.classList.add("fade-in");
+}
+
 /**
  * Renders all weather data in the DOM
  * @param {number} lat Latitude
@@ -134,6 +201,12 @@ export function updateWeather(lat, lon) {
 
   // Current weather API integration
   fetchWeatherData(url.getCurrentWeather(lat, lon), (currentWeather) => {
+    if (!currentWeather) {
+      console.error("Failed to fetch current weather data");
+      handleError404();
+      return;
+    }
+
     const {
       weather,
       dt: dateUnix,
@@ -191,6 +264,15 @@ export function updateWeather(lat, lon) {
 
     // Today's highlights
     fetchWeatherData(url.getAirPollutionData(lat, lon), (airPollutionData) => {
+      if (
+        !airPollutionData ||
+        !airPollutionData.list ||
+        airPollutionData.list.length === 0
+      ) {
+        console.error("Failed to fetch air pollution data");
+        return;
+      }
+
       const [
         {
           main: { aqi },
@@ -335,6 +417,11 @@ export function updateWeather(lat, lon) {
 
     // Hourly forecast section
     fetchWeatherData(url.getHourlyForecast(lat, lon), (forecast) => {
+      if (!forecast || !forecast.list || forecast.list.length === 0) {
+        console.error("Failed to fetch forecast data");
+        return;
+      }
+
       const {
         list: forecastList,
         city: { timezone },
