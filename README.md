@@ -51,8 +51,6 @@ Visit [Wardosphere](https://wardosphere.vercel.app/) to see the application in a
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- NPM or Yarn
 - OpenWeatherMap API key
 
 ### Local Development
