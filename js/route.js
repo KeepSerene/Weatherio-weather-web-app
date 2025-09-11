@@ -42,12 +42,11 @@ const getCurrentLocation = () => {
         // other errors, fallback to default location
         window.location.hash = defaultLocation;
       }
+    },
+    {
+      timeout: 10000,
+      maximumAge: 180000, // 3 mins
     }
-    // {
-    //   // options for better geolocation experience
-    //   timeout: 10000,
-    //   maximumAge: 180000, // 3 mins
-    // }
   );
 };
 
