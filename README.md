@@ -10,6 +10,10 @@
   [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 </div>
 
+## 📸 Screenshot
+
+![Desktop view of Wardosphere web app](/images/wardosphere.png?raw=true "Desktop View")
+
 ## ✨ Features
 
 - **Real-time Weather Data**: Current weather conditions with detailed metrics
