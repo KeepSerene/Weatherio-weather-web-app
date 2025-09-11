@@ -807,6 +807,10 @@ article.wrapper::before {
     column-gap: 24px;
   }
 
+  .highlight-card .title-1 {
+    font-size: 2.8rem !important; /* reduced from 3.6rem */
+  }
+
   .slider-list {
     gap: 16px;
   }
