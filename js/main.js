@@ -115,28 +115,16 @@ export function showPlaceholderContent() {
   // placeholder for current weather
   currentWeatherSec.innerHTML = `
     <div class="current-weather-card | card card-lg" style="text-align: center; padding: 40px 20px;">
-      <i class="msr-icon" style="font-size: 4rem; color: var(--on-surface-variant); margin-bottom: 16px;">location_searching</i>
-      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 12px;">Welcome to Wardosphere</h2>
-      <div style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center;">
-        <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
-          <i class="msr-icon">my_location</i>
-          <span class="label-1">Allow Location</span>
-        </div>
-        <span style="color: var(--on-surface-variant);">or</span>
-        <div style="display: flex; align-items: center; gap: 8px; color: var(--on-surface-variant-2);">
-          <i class="msr-icon">search</i>
-          <span class="label-1">Search City</span>
-        </div>
-      </div>
+      <i class="msr-icon" style="font-size: 4rem; color: var(--on-surface-variant); margin-inline: auto;">location_searching</i>
+      <p style="color: var(--on-surface-variant-2); margin-top: 16px">Allow location or search city</p>
     </div>
   `;
 
   // placeholder for highlights
   highlightsSec.innerHTML = `
     <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
-      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">wb_sunny</i>
-      <h2 class="title-2" style="color: var(--on-surface-variant); margin-bottom: 8px;">Weather Highlights</h2>
-      <p class="body-3" style="color: var(--on-surface-variant-2);">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-inline: auto;">wb_sunny</i>
+      <p style="color: var(--on-surface-variant-2); margin-top: 16px;">
         Air quality, humidity, pressure and more will appear here
       </p>
     </div>
@@ -146,8 +134,8 @@ export function showPlaceholderContent() {
   hourlyForecastSec.innerHTML = `
     <h2 class="title-2">Hourly Forecast</h2>
     <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
-      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">schedule</i>
-      <p class="body-3" style="color: var(--on-surface-variant-2);">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-inline: auto;">schedule</i>
+      <p style="color: var(--on-surface-variant-2); margin-top: 16px;">
         24-hour weather forecast will be displayed here
       </p>
     </div>
@@ -157,8 +145,8 @@ export function showPlaceholderContent() {
   weeklyForecastSec.innerHTML = `
     <h2 class="title-2">5 Day Forecast</h2>
     <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
-      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">date_range</i>
-      <p class="body-3" style="color: var(--on-surface-variant-2); font-size: 0.875rem">
+      <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-inline: auto;">date_range</i>
+      <p style="color: var(--on-surface-variant-2); margin-top: 16px;">
         Extended weather forecast will be shown here
       </p>
     </div>
