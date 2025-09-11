@@ -792,11 +792,11 @@ article.wrapper::before {
   }
 
   .highlight-card:nth-child(-n + 2) {
-    height: 200px;
+    min-height: 200px;
   }
 
   .highlight-card:nth-child(n + 3) {
-    height: 150px;
+    min-height: 150px;
   }
 
   .highlight-card .msr-icon {

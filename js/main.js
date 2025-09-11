@@ -281,28 +281,28 @@ export function updateWeather(lat, lon) {
               <ul class="card-list">
                 <!-- Highlight 1 -->
                 <li class="card-item">
-                  <p class="title-1">${pm2_5.toFixed(2)}</p>
+                  <p class="title-1">${pm2_5.toPrecision(3)}</p>
 
                   <p class="label-1">PM<sub>2.5</sub></p>
                 </li>
 
                 <!-- Highlight 2 -->
                 <li class="card-item">
-                  <p class="title-1">${so2.toFixed(2)}</p>
+                  <p class="title-1">${so2.toPrecision(3)}</p>
 
                   <p class="label-1">SO<sub>2</sub></p>
                 </li>
 
                 <!-- Highlight 3 -->
                 <li class="card-item">
-                  <p class="title-1">${no2.toFixed(2)}</p>
+                  <p class="title-1">${no2.toPrecision(3)}</p>
 
                   <p class="label-1">NO<sub>2</sub></p>
                 </li>
 
                 <!-- Highlight 4 -->
                 <li class="card-item">
-                  <p class="title-1">${o3.toFixed(2)}</p>
+                  <p class="title-1">${o3.toPrecision(3)}</p>
 
                   <p class="label-1">O<sub>3</sub></p>
                 </li>
