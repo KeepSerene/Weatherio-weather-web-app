@@ -158,7 +158,7 @@ export function showPlaceholderContent() {
     <h2 class="title-2">5 Day Forecast</h2>
     <div class="card card-lg" style="text-align: center; padding: 40px 20px;">
       <i class="msr-icon" style="font-size: 3rem; color: var(--on-surface-variant); margin-bottom: 16px;">date_range</i>
-      <p class="body-3" style="color: var(--on-surface-variant-2);">
+      <p class="body-3" style="color: var(--on-surface-variant-2); font-size: 0.875rem">
         Extended weather forecast will be shown here
       </p>
     </div>

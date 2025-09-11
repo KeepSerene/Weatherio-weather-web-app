@@ -19,6 +19,13 @@ const getCurrentLocation = () => {
   // show placeholder while waiting for location permission
   showPlaceholderContent();
 
+  // clear search field when getting current location
+  const searchFieldEl = document.querySelector("[data-search-field]");
+
+  if (searchFieldEl) {
+    searchFieldEl.value = "";
+  }
+
   window.navigator.geolocation.getCurrentPosition(
     (result) => {
       const { latitude, longitude } = result.coords;
@@ -38,9 +45,8 @@ const getCurrentLocation = () => {
     },
     {
       // options for better geolocation experience
-      enableHighAccuracy: true,
       timeout: 10000,
-      maximumAge: 300000, // 5 mins
+      maximumAge: 180000, // 3 mins
     }
   );
 };
